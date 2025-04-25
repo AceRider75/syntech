@@ -1,0 +1,95 @@
+/* landing.css - Styles specifically for the landing page */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Variables copied from the previous full CSS, adjust if needed */
+    --font-family: 'Poppins', sans-serif;
+    --gradient-start: #1d2961;
+    --gradient-mid: #764ba2;
+    --gradient-end: #6a11cb;
+    --gradient-text: linear-gradient(90deg, #a4b0ff, #ffffff);
+    --gradient-button-start: #5a67d8;
+    --gradient-button-end: #8a4baf;
+    --text-light: #f0f0f5;
+    --text-dark: #2d3748; /* Used if adding light sections */
+    --text-muted: #a0aec0;
+    --card-bg-feature: rgba(255, 255, 255, 0.08);
+    --card-border-feature: rgba(255, 255, 255, 0.15);
+    --footer-bg: rgba(0, 0, 0, 0.2);
+    --button-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    --button-hover-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 100%);
+    color: var(--text-light);
+    line-height: 1.7;
+    display: flex; /* Allow footer push */
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 15px; }
+
+/* Header */
+.landing-header { background: rgba(0, 0, 0, 0.15); padding: 1rem 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.landing-header nav { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 700; color: #fff; }
+.nav-buttons button { margin-left: 1rem; padding: 0.6rem 1.2rem; border-radius: 6px; border: none; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease, transform 0.2s ease; }
+.nav-buttons #loginBtnNav { background: rgba(255, 255, 255, 0.2); color: var(--text-light); }
+.nav-buttons #loginBtnNav:hover { background: rgba(255, 255, 255, 0.3); }
+.nav-buttons button.cta { background: linear-gradient(45deg, var(--gradient-button-start), var(--gradient-button-end)); color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.nav-buttons button.cta:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+
+/* Main Content Area */
+#landing-page-content {
+    flex: 1; /* Take available space */
+}
+
+/* Hero Section */
+.hero { padding: 10vh 0 8vh 0; text-align: center; animation: fadeIn 1s ease-out; }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 3.8rem); font-weight: 700; margin-bottom: 1rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.25); max-width: 800px; margin-left: auto; margin-right: auto; }
+.hero .brand-gradient { background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding: 0 2px; }
+.hero .tagline { font-size: clamp(1.1rem, 3vw, 1.3rem); font-weight: 400; color: var(--text-light); opacity: 0.9; margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+button.cta.large { padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 600; border-radius: 8px; background: linear-gradient(45deg, var(--gradient-button-start), var(--gradient-button-end)); color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.2s ease, box-shadow 0.3s ease; border: none; cursor: pointer; }
+button.cta.large:hover { transform: translateY(-3px); box-shadow: 0 7px 20px rgba(0,0,0,0.3); }
+
+/* Features Section */
+.features { padding: 4rem 0; background: rgba(0, 0, 0, 0.1); }
+.features h2 { text-align: center; font-size: 2.2rem; font-weight: 600; margin-bottom: 3rem; color: #fff; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+.feature { background: var(--feature-card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--feature-card-border); transition: transform 0.3s ease, background 0.3s ease; }
+.feature:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.12); }
+.feature-icon { display: block; font-size: 2.5rem; margin-bottom: 15px; color: #b3c0ff; }
+.feature h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 10px; color: #e0e0ff; }
+.feature p { font-size: 0.95rem; color: var(--text-light); opacity: 0.85; }
+
+/* Call to Action Section */
+.call-to-action { padding: 5rem 0; text-align: center; }
+.call-to-action h2 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
+.call-to-action p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
+/* Reuse .cta.large style */
+.call-to-action button.cta.large { /* Styles inherited */ }
+
+/* Footer */
+.landing-footer { background: var(--footer-bg); padding: 1.5rem 0; text-align: center; margin-top: auto; /* Pushes to bottom */ font-size: 0.9rem; color: var(--text-muted); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .landing-header nav { flex-direction: column; gap: 10px; }
+    .nav-buttons { margin-top: 10px; }
+    .hero { padding: 8vh 0; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero .tagline { font-size: 1.1rem; }
+    .features { padding: 3rem 0; }
+    .features h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+    .features-grid { grid-template-columns: 1fr; }
+    .call-to-action { padding: 4rem 0; }
+    .call-to-action h2 { font-size: 1.8rem; }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

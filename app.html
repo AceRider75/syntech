@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynTech</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <!-- Auth Section -->
+    <div id="auth-container">
+        <div class="container">
+            <div class="auth-box">
+                <h2>Welcome to SynTech</h2>
+                <p id="auth-message" class="error-message"></p>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <!-- onclick removed -->
+                <button>Sign Up</button>
+                <!-- onclick removed -->
+                <button>Log In</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app-container" class="hidden">
+        <header>
+            <h1>SynTech</h1>
+            <div id="user-info">
+                Logged in as: <span id="user-email"></span>
+            </div>
+            <!-- onclick removed -->
+            <button>Log Out</button>
+        </header>
+
+        <div class="container dashboard">
+             <div class="controls">
+                 <div class="language-selector">
+                    <label for="language">Select Language:</label>
+                    <!-- onchange removed, will be handled by addEventListener('change', handleLanguageChange) in JS -->
+                    <select id="language">
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="c">C</option>
+                    </select>
+                </div>
+                 <div class="progress-tracker">
+                    <h3>Your Progress</h3>
+                    <p>Level: <span id="current-level">1</span></p>
+                    <p>Completed Lessons: <span id="completed-lessons">0</span></p>
+                </div>
+            </div>
+
+            <div class="lesson-container">
+                <div id="loading-indicator" class="hidden">Generating lesson...</div>
+                <div id="lesson-content">
+                    <!-- Lesson content will be loaded here -->
+                </div>
+                <div id="exercise-section" class="hidden">
+                    <h3>Coding Exercise</h3>
+                    <div id="exercise-description"></div>
+                    <div class="code-editor">
+                        <textarea id="code-input" placeholder="Enter your code here..."></textarea>
+                    </div>
+                    <!-- onclick removed, uses id="submit-button" for addEventListener -->
+                    <button id="submit-button">Submit Solution</button>
+                </div>
+                <div id="feedback-section" class="hidden">
+                     <h4>AI Feedback</h4>
+                     <div id="feedback-text"></div>
+                     <div id="feedback-actions">
+                         <!-- Retry button will be added dynamically here by JS if needed -->
+                     </div>
+                </div>
+                 <div id="next-lesson-section" class="hidden">
+                     <!-- onclick removed, uses id="next-lesson-button" for addEventListener -->
+                     <button id="next-lesson-button">Start Next Lesson</button>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Firebase SDKs (required globally) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Gemini SDK script tag is intentionally REMOVED here (imported within script.js) -->
+
+    <!-- Load YOUR script as a module -->
+<!-- AFTER: only appLogic.js needs to be a module -->
+    <script src="userProfileData.js"></script>
+    <script type="module" src="appLogic.js"></script>
+
+
+</body>
+</html>

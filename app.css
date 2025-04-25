@@ -1,0 +1,430 @@
+/* styles.css - Complete UI Upgrade */
+
+/* Import Google Font (Optional but recommended for professional look) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --gradient-start: #1d2961;
+    --gradient-mid: #764ba2;
+    --gradient-end: #6a11cb;
+    --gradient-button-start: #6a11cb;
+    --gradient-button-end: #2575fc;
+    --light-bg: #f4f6fc; /* Light background for dashboard content */
+    --card-bg: #ffffff;
+    --text-light: #f0f0f5;
+    --text-dark: #333;
+    --text-muted: #6c757d;
+    --primary-accent: #4a3fbd; /* For headings on light bg */
+    --error-color: #ff6b6b;
+    --success-color: #2ecc71;
+    --border-color: #e0e4e8;
+    --input-bg-light: rgba(240, 240, 255, 0.8);
+    --input-bg-dark: rgba(255, 255, 255, 0.15);
+    --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    --card-hover-shadow: 0 12px 40px 0 rgba(101, 71, 255, 0.3);
+    --button-shadow: 0 4px 15px rgba(101, 71, 255, 0.5);
+    --button-hover-shadow: 0 6px 20px rgba(101, 71, 255, 0.8);
+}
+
+/* --- Global Styles & Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    transition: background 0.5s ease; /* Smooth background transition */
+    color: var(--text-dark); /* Default text color */
+    line-height: 1.6;
+	
+}
+
+.hidden {
+    display: none !important;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px; /* Max width for dashboard content */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Login Page Styles (#auth-container visible) --- */
+body:has(#auth-container:not(.hidden)) {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#auth-container {
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 400px;
+    max-width: 90vw; /* Responsive width */
+    text-align: center;
+    animation: fadeInScaleUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    color: var(--text-light);
+}
+
+.auth-box h2 {
+    font-weight: 700;
+    font-size: 2rem; /* Slightly smaller */
+    margin-bottom: 30px;
+    color: #e0e0ff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+.auth-box input[type="email"],
+.auth-box input[type="password"] {
+    width: 100%;
+    padding: 15px 20px; /* More padding */
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    outline: none;
+    background: var(--input-bg-dark);
+    color: var(--text-light);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-box input[type="email"]::placeholder,
+.auth-box input[type="password"]::placeholder {
+    color: #c0c0dd;
+    font-style: italic;
+}
+
+.auth-box input[type="email"]:focus,
+.auth-box input[type="password"]:focus {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(var(--gradient-button-end), 0.5);
+}
+
+/* Shared Button Style (Login & Dashboard) */
+button {
+    padding: 12px 25px;
+    margin-top: 10px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    cursor: pointer;
+    background: linear-gradient(45deg, var(--gradient-button-start), var(--gradient-button-end));
+    color: white;
+    box-shadow: var(--button-shadow);
+    transition: transform 0.2s ease, background 0.4s ease, box-shadow 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:hover:not(:disabled) {
+    background: linear-gradient(45deg, var(--gradient-button-end), var(--gradient-button-start));
+    box-shadow: var(--button-hover-shadow);
+    transform: translateY(-2px); /* Subtle lift */
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Auth specific button styling */
+.auth-box button {
+    width: 100%;
+    padding: 15px 0; /* Taller buttons */
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    min-height: 1.2em;
+    font-weight: 500;
+    background-color: rgba(255, 107, 107, 0.1);
+    padding: 8px;
+    border-radius: 5px;
+    border-left: 4px solid var(--error-color);
+}
+
+@keyframes fadeInScaleUp {
+    from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- Dashboard Page Styles (#app-container visible) --- */
+body:has(#app-container:not(.hidden)) {
+    background-color: var(--light-bg);
+}
+
+#app-container {
+    /* Optional: Add transition if needed when switching views */
+}
+
+#app-container header {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid));
+    color: white;
+    padding: 15px 0; /* Centered container handles side padding */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Keep header visible on scroll */
+    top: 0;
+    z-index: 100;
+}
+
+#app-container header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#app-container header h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#user-info {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+#app-container header button { /* Logout button */
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0; /* Reset margin */
+}
+
+#app-container header button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: none;
+    transform: none;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Slightly wider sidebar */
+    gap: 30px;
+    margin-top: 30px;
+    padding-bottom: 30px; /* Space at bottom */
+}
+
+/* Card styling for Controls and Lesson Container */
+.controls, .lesson-container {
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    padding: 25px 30px;
+    transition: box-shadow 0.3s ease;
+}
+
+.controls:hover, .lesson-container:hover {
+    box-shadow: var(--card-hover-shadow);
+}
+
+/* Controls Section (Sidebar) */
+.controls h3 {
+    color: var(--primary-accent);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.language-selector label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.language-selector select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    outline: none;
+    background-color: var(--input-bg-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-selector select:focus {
+    border-color: var(--gradient-button-end);
+    box-shadow: 0 0 0 3px rgba(var(--gradient-button-end), 0.2);
+}
+
+.progress-tracker p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+.progress-tracker span {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Lesson Container (Main Area) */
+.lesson-container h2 {
+    color: var(--primary-accent);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.7rem;
+}
+.lesson-container h3 { /* Exercise title */
+     color: var(--gradient-mid);
+     margin-top: 30px;
+     padding-top: 25px;
+     border-top: 1px solid var(--border-color);
+     margin-bottom: 15px;
+}
+.lesson-container h4 { /* Feedback title */
+     color: var(--gradient-mid);
+     margin-top: 0;
+     margin-bottom: 15px;
+}
+
+#lesson-content p, #exercise-description p {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+/* Code Blocks Styling */
+#lesson-content pre, #exercise-description pre, #feedback-text pre {
+    background-color: #eef1f8; /* Slightly different bg for code */
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    margin: 1rem 0;
+    border: 1px solid var(--border-color);
+}
+#lesson-content code, #exercise-description code, #feedback-text code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Loading Indicator */
+#loading-indicator {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.1rem;
+    color: var(--gradient-mid);
+    font-weight: 500;
+}
+
+/* Exercise Section */
+.code-editor textarea#code-input {
+    width: 100%;
+    min-height: 200px; /* More space */
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    margin-top: 10px;
+    outline: none;
+    resize: vertical; /* Allow vertical resize */
+    background-color: var(--input-bg-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.code-editor textarea#code-input:focus {
+    border-color: var(--gradient-button-end);
+    box-shadow: 0 0 0 3px rgba(var(--gradient-button-end), 0.2);
+}
+
+/* Feedback Section */
+#feedback-section {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background-color: #f9faff; /* Slightly different bg */
+}
+
+#feedback-text {
+    padding-left: 15px;
+    border-left-width: 5px;
+    border-left-style: solid;
+    margin-bottom: 15px;
+}
+#feedback-text.passed {
+    border-left-color: var(--success-color);
+}
+#feedback-text.failed {
+    border-left-color: var(--error-color);
+}
+
+#feedback-actions button { /* Retry button */
+     background: var(--text-muted);
+     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+     font-size: 0.95rem;
+     padding: 10px 20px;
+     text-transform: none;
+     letter-spacing: normal;
+}
+#feedback-actions button:hover {
+     background: #5a6268;
+     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+     transform: translateY(-1px);
+}
+
+/* Next Lesson Button */
+#next-lesson-section {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+
+    #app-container header {
+        padding: 15px 20px;
+        text-align: center;
+    }
+     #app-container header .container {
+         flex-direction: column;
+         gap: 10px;
+     }
+     #app-container header h1 {
+         font-size: 1.4rem;
+     }
+
+    #auth-container {
+        padding: 30px 25px;
+        width: 90vw;
+    }
+     .auth-box h2 {
+         font-size: 1.8rem;
+     }
+}
