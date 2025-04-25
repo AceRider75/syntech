@@ -1,3 +1,5 @@
+## SynTech
+
 ## Inspiration
 
 SynTech was inspired by the idea that learning to code should be as interactive, adaptive, and encouraging as having a personal mentor. We noticed that most tutorials and coding platforms are either too static, too fast, or don’t provide instant, personalized feedback. With the rise of generative AI, we saw an opportunity to create a platform that delivers tailored lessons and real-time code reviews, making the journey from beginner to confident coder smoother and more enjoyable.
