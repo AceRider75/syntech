@@ -1,7 +1,66 @@
 
 ![qTxtiO28jxf_R_5wbJilu](https://github.com/user-attachments/assets/652d6912-71a2-4e79-8147-4fb49435496d)
 
-## SynTech
+### SynTech
+
+## Setup & Run Guide
+
+### Prerequisites  
+- Node.js & npm (v14+)  
+- A modern browser (Chrome, Firefox, Edge)  
+- Firebase account & project  
+- Google AI Studio account for Gemini API key  
+
+### Clone the Repository
+
+'''
+git clone https://github.com/AceRider75/syntech.git
+cd syntech
+'''
+
+
+### Install Local Server  
+**VS Code Live Server** (recommended):  
+- Install the “Live Server” extension.  
+- Right-click `index.html` → **Open with Live Server**.
+
+**npm http-server**:  
+
+npm install -g http-server
+http-server -c-1 .
+
+
+### Configure Firebase  
+1. Create a Firebase project.  
+2. Enable Email/Password under Authentication.  
+3. Create a Firestore database in test mode.  
+4. Copy SDK config from Project Settings → **General**.  
+5. Replace the `firebaseConfig` object in **`app.js`** with your values.
+
+### Configure Gemini API Key  
+1. Obtain your Gemini key from Google AI Studio.  
+2. Replace `GEMINI_API_KEY` in **`app.js`** with your key.
+
+### Run the Application  
+1. Serve with Live Server or `http-server`.  
+2. Open: `http://localhost:5500/index.html` (Live Server) or `http://localhost:8080/index.html` (`http-server`).  
+3. Click **Get Started** → `app.html`.  
+4. Sign up / log in → start learning!
+
+### Testing the Flow  
+- **Landing → App:** Buttons should redirect to `app.html`.  
+- **Sign Up / In:** Verify Firebase user and Firestore document.  
+- **AI Lessons:** Confirm lesson generation and feedback.
+
+### Troubleshooting  
+- **CORS / Module Errors:** Must serve over HTTP, not `file://`.  
+- **Auth Errors:** Ensure Email/Password sign-in is enabled.  
+- **AI Errors:** Check Gemini API key and console logs.  
+- **Parsing Errors:** Verify `cleanJsonFromMarkdown` helper in `app.js`.
+
+---
+
+
 
 ## Inspiration
 
