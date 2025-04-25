@@ -1,3 +1,6 @@
+
+![qTxtiO28jxf_R_5wbJilu](https://github.com/user-attachments/assets/652d6912-71a2-4e79-8147-4fb49435496d)
+
 ## SynTech
 
 ## Inspiration
